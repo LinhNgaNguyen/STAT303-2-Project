@@ -9,7 +9,7 @@
 <meta name="author" content="Hoda Fakhari, Elena Llaguno Cantu, Luna Nguyen, and Kiara Villalobos-Hernandez">
 <meta name="dcterms.date" content="2023-03-15">
 
-<title>Project Report: Hotel Cancelletions</title>
+<title>Project Report: Hotel Booking Cancelletions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2546,10 +2546,10 @@ vertical-align: -.125em;
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#background-motivation-luna-kiara" id="toc-background-motivation-luna-kiara" class="nav-link active" data-scroll-target="#background-motivation-luna-kiara"><span class="toc-section-number">1</span>  Background / Motivation (Luna + Kiara)</a></li>
-  <li><a href="#problem-statement-luna-kiara" id="toc-problem-statement-luna-kiara" class="nav-link" data-scroll-target="#problem-statement-luna-kiara"><span class="toc-section-number">2</span>  Problem statement (Luna + Kiara)</a></li>
-  <li><a href="#data-sources-luna-kiara" id="toc-data-sources-luna-kiara" class="nav-link" data-scroll-target="#data-sources-luna-kiara"><span class="toc-section-number">3</span>  Data sources (Luna + Kiara)</a></li>
-  <li><a href="#stakeholders-luna-kiara" id="toc-stakeholders-luna-kiara" class="nav-link" data-scroll-target="#stakeholders-luna-kiara"><span class="toc-section-number">4</span>  Stakeholders (Luna + Kiara)</a></li>
+  <li><a href="#background-motivation" id="toc-background-motivation" class="nav-link active" data-scroll-target="#background-motivation"><span class="toc-section-number">1</span>  Background / Motivation</a></li>
+  <li><a href="#problem-statement" id="toc-problem-statement" class="nav-link" data-scroll-target="#problem-statement"><span class="toc-section-number">2</span>  Problem statement</a></li>
+  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources"><span class="toc-section-number">3</span>  Data sources</a></li>
+  <li><a href="#stakeholders" id="toc-stakeholders" class="nav-link" data-scroll-target="#stakeholders"><span class="toc-section-number">4</span>  Stakeholders</a></li>
   <li><a href="#data-quality-check-cleaning-preparation-hoda-elena" id="toc-data-quality-check-cleaning-preparation-hoda-elena" class="nav-link" data-scroll-target="#data-quality-check-cleaning-preparation-hoda-elena"><span class="toc-section-number">5</span>  Data quality check / cleaning / preparation (Hoda, Elena)</a></li>
   <li><a href="#exploratory-data-analysis-hoda-elena" id="toc-exploratory-data-analysis-hoda-elena" class="nav-link" data-scroll-target="#exploratory-data-analysis-hoda-elena"><span class="toc-section-number">6</span>  Exploratory data analysis (Hoda, Elena)</a>
   <ul>
@@ -2571,8 +2571,8 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Report: Hotel Cancelletions</h1>
-<p class="subtitle lead">anaconda</p>
+<h1 class="title">Project Report: Hotel Booking Cancelletions</h1>
+<p class="subtitle lead">Anaconda</p>
 </div>
 
 
@@ -2599,33 +2599,29 @@ vertical-align: -.125em;
 <div>
   <div class="abstract">
     <div class="abstract-title">Abstract</div>
-    This project report aims to analyze hotel cancellations at INN Hotel Chain from 2017 to 2018. The goal is to develop effective logistical models to predict cancellation probabilities of hotel guests, which would help minimize hotel profit loss and implement effective overbooking strategies. The data was thoroughly explored and cleaned, and new variables such as seasons and holidays were manually inputted to gain additional insights. Exploratory data analysis (EDA) was conducted, which revealed that hotel cancellations were less during winter. Additionally, greater lead times and increased room prices both led to an increased probability of hotel cancellations. The aim was to minimize False Negative Rates (FNR) and maximize model accuracy to create an effective “overbooking formula” for hotels. Various techniques such as forward and backward selection, lasso and ridge regression, as well as KNN were used to develop the models. The baseline model, as well as the ridge regression model, were found to be the best models considering the FNR and accuracy metrics. Both models had an accuracy close to 80% and an FNR of around 30%. Based on the findings of EDA, we recommend enhancing customer service and marketing efforts to prevent cancellations. We also recommend using the logistical model developed above to mitigate overbooking to minimize loss. In conclusion, this project provides a valuable insight into hotel cancellations at INN Hotel Chain. The developed models would help the hotel chain to predict cancellation probabilities and make informed decisions to minimize loss.
+    In this report, we analyze hotel booking cancellations at the INN Hotel chain from 2017 to 2018. Our goal is to develop logistic regression models to predict the cancellation probabilities of hotel guests, which would help minimize hotel profit loss and allow hotels to implement effective overbooking strategies. The data were thoroughly explored and cleaned, and new variables such as seasons and holidays were manually inputted to gain additional insights. Our exploratory data analysis (EDA) revealed that booking cancellations occurred less during winter, and that both greater lead times and increased room prices led to an increased probability of booking cancellation. We aimed to develop a model that minimized False Negative Rates (FNR) and maximized accuracy. We also created an effective “overbooking formula” for hotels. Various techniques such as forward and backward selection, lasso and ridge regression, as well as KNN were used to develop the models. The baseline model, as well as the ridge regression model, were found to be the best models considering their FNR and accuracy metrics. Both models had an accuracy close to 80% and an FNR of approximately 30%. Based on the findings from our EDA, we recommend enhancing customer service and marketing efforts to prevent cancellations. We also recommend using the logistic regression model developed above to mitigate overbooking to minimize loss. Overall, this project provides valuable insights into hotel booking cancellations at the INN Hotel Chain. The developed models would help the hotel chain to predict cancellation probabilities and make informed decisions to minimize loss.
   </div>
 </div>
 
 </header>
 
-<section id="background-motivation-luna-kiara" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="background-motivation-luna-kiara"><span class="header-section-number">1</span> Background / Motivation (Luna + Kiara)</h2>
-<p>What motivated you to work on this problem?</p>
-<p>Mention any background about the problem, if it is required to understand your analysis later on.</p>
-<p>Many hotels usually only charge a small price or allow customers to cancel their hotel booking completely free. However, this can lead to a problem for the hotel if customers abuse this service. Therefore, one solution is to overbook the hotel, but overbooking runs the risk of upsetting customers if they end up not getting a room. This also might result in the hotel having to book their customer a room in a different hotel, leading to an even higher cost.</p>
+<section id="background-motivation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="background-motivation"><span class="header-section-number">1</span> Background / Motivation</h2>
+<p>Early on in the pandemic, people had to deal with their travel plans being upended overnight. On the consumer side, we knew that the process involved the disappointment of canceling flights and hotel reservations, but we were curious about the effects on businesses like airlines and hotels. We were particularly curious about hotel booking cancellations and how these impact hotels during non-pandemic times, since we know that the impact during the pandemic was drastic.</p>
+<p>Today, hotels tend to provide free or low-cost cancellation services for customers who cannot follow through with their bookings. However, this can become problematic for the hotel if customers abuse cancellation services and can result in a loss of profit. While hotels could address this issue by overbooking hotel rooms, they run the risk of losing business and upsetting customers if they fail to overbook the correct amount. An incorrect approach to overbooking could also result in the hotel having to book their customer a room in a different hotel, leading to an even higher cost.</p>
 </section>
-<section id="problem-statement-luna-kiara" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="problem-statement-luna-kiara"><span class="header-section-number">2</span> Problem statement (Luna + Kiara)</h2>
-<p>Describe your problem statement. Articulate your objectives using absolutely no jargon. Interpret the problem as inference and/or prediction.</p>
-<p>Predicting the probability of cancellation of each hotel guest to develop an overbooking formula is very helpful to determine the number of rooms to overbook and therefore, maximimizes profit.</p>
+<section id="problem-statement" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="problem-statement"><span class="header-section-number">2</span> Problem statement</h2>
+<p>We are interested in predicting the probability of a random hotel guest cancelling their booking at an INN hotel. This is a prediction problem. We are also interested in developing a formula for the INN hotel chain to use when calculating how much they should overbook, which could help them maximize profit.</p>
 </section>
-<section id="data-sources-luna-kiara" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="data-sources-luna-kiara"><span class="header-section-number">3</span> Data sources (Luna + Kiara)</h2>
-<p>What data did you use? Provide details about your data. Include links to data if you are using open-access data.</p>
-<p>We used a dataset from Kaggle with around 36,000 observations and 18 variables. The dataset includes information about hotel reservations from the INN hotel chain and wether the reservations were cancelled or not cancelled.</p>
+<section id="data-sources" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="data-sources"><span class="header-section-number">3</span> Data sources</h2>
+<p>We used a dataset from Kaggle with approximately 36,000 observations and 18 variables. Each observation corresponds to a hotel booking within the INN hotel chain made in 2017 or 2018. The dataset includes information about the hotel bookings such as the length of stay, number of guests, and whether the reservations were cancelled.</p>
 <p>Here is the link to the dataset: https://www.kaggle.com/datasets/ahsan81/hotel-reservations-classification-dataset</p>
 </section>
-<section id="stakeholders-luna-kiara" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="stakeholders-luna-kiara"><span class="header-section-number">4</span> Stakeholders (Luna + Kiara)</h2>
-<p>Who cares? If you are successful, what difference will it make to them?</p>
-<p>The hotel manager and the INN hotel chain are our stakeholders. For the hotel manager, they would be able to identify the probability of a customer cancelling their reservation to navigate overbooking. On the other hand, the INN hotel chain cares because they want to maximizes their profit by minimizing the loss from having empty rooms in the hotel.</p>
+<section id="stakeholders" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="stakeholders"><span class="header-section-number">4</span> Stakeholders</h2>
+<p>Our two key stakeholders are hotel managers and the INN hotel chain. Our success matters to the hotel manager because they would be able to identify the probability of a customer cancelling their reservation to navigate overbooking. Meanwhile, the INN hotel chain cares because our success would help them maximize their profit by minimizing the loss from having empty rooms across their hotels.</p>
 </section>
 <section id="data-quality-check-cleaning-preparation-hoda-elena" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="data-quality-check-cleaning-preparation-hoda-elena"><span class="header-section-number">5</span> Data quality check / cleaning / preparation (Hoda, Elena)</h2>
@@ -2759,6 +2755,7 @@ vertical-align: -.125em;
 <p>If it is inference, will the inference hold for a certain period of time, for a certain subset of population, and / or for certain conditions.</p>
 <p>If it is prediction, then will it be possible / convenient / expensive for the stakeholders to collect the data relating to the predictors in the model. Using your model, how soon will the stakeholder be able to predict the outcome before the outcome occurs. For example, if the model predicts the number of bikes people will rent in Evanston on a certain day, then how many days before that day will your model be able to make the prediction. This will depend on how soon the data that your model uses becomes available. If you are predicting election results, how many days / weeks / months / years before the election can you predict the results.</p>
 <p>When will your model become too obsolete to be useful?</p>
+<p>It is important to note that we only had access to data from 2018 and part of 2017.</p>
 </section>
 <section id="developing-overbooking-formula-luna-kiara" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="developing-overbooking-formula-luna-kiara"><span class="header-section-number">10</span> Developing Overbooking Formula (Luna + Kiara)</h2>
